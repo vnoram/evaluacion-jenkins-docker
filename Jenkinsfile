@@ -20,6 +20,8 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Instalando herramientas de seguridad...'
+                sh 'pip install --upgrade pip'
+                sh 'pip install pbr'
                 sh 'pip install -r requirements.txt'
                 echo 'Ejecutando análisis estático con Bandit...'
                 sh 'bandit -r . || true'
